@@ -5,12 +5,13 @@ var max_speed = 600.0
 var accelerate = false
 var time_highlight = 0.4
 var time_highlight_size = 0.3
-
+var Global = 0
 var wobble_period = 0.0
 var wobble_amplitude = 0.0
 var wobble_max = 5
 var wobble_direction = Vector2.ZERO
 var decay_wobble = 0.15
+var Levels = 0 
 
 var distort_effect = 0.0002
 var h_rotate = 0.0
@@ -73,7 +74,16 @@ func distort():
 	$Images.scale = direction
 	
 func comet():
-	pass
+	h_rotate=wrapf(h_rotate+0.01,0,1)
+	var Comet_Container=get_node_or_null("/root/Game/Comet_Container")
+	if Comet_Container!=null:
+		var sprite=$Images/Sprite.duplicate()
+		sprite.global_position=global_position
+		sprite.modulate.s=0.6
+		sprite.modulate.h=h_rotate
+		Comet_Container.add_child(sprite)
 
 func die():
+	var die_sound=get_node("/root/Game/Die_Sound")
+	die_sound.play()
 	queue_free()

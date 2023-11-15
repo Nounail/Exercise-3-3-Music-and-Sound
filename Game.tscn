@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://sp64y2eqbd63"]
+[gd_scene load_steps=15 format=3 uid="uid://sp64y2eqbd63"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cfb204qt38vvo" path="res://Paddle/Paddle.tscn" id="2"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
+[ext_resource type="Script" path="res://Comet_Container.gd" id="3_nm6sb"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://bna1k8dkka5xx" path="res://UI/Pause_Menu.tscn" id="5"]
 [ext_resource type="Script" path="res://Wall/Wall.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://cb6abwxodebx1" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://d03l3yccdo8fa" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Camera.gd" id="9"]
+[ext_resource type="AudioStream" uid="uid://c685uaoqonffl" path="res://Loseball.wav" id="11_16cgq"]
+[ext_resource type="AudioStream" uid="uid://ci55iux2njpsm" path="res://paddle.wav" id="12_3ha65"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -49,6 +52,9 @@ script = ExtResource("6")
 position = Vector2(512, -90)
 shape = SubResource("2")
 
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("3_nm6sb")
+
 [node name="Brick_Container" type="Node2D" parent="."]
 process_mode = 3
 script = ExtResource("1")
@@ -74,3 +80,15 @@ visible = false
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 script = ExtResource("9")
+
+[node name="Paddle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_16cgq")
+
+[node name="Wall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_3ha65")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_16cgq")
+
+[node name="Brick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_3ha65")

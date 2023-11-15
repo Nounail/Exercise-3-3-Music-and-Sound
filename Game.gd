@@ -1,5 +1,7 @@
 extends Node2D
 
+var Global = 0 
+var Levels = 0
 var margin = Vector2(160,85)
 var index = Vector2(100,40)
 
